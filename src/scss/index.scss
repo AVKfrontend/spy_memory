@@ -739,10 +739,12 @@ button {
   }
 
   &__swiper {
-    display: flex;
-    gap: 20px;
-    width: fit-content;
+    // display: flex;
+    // gap: 20px;
+    // width: fit-content;
     margin-top: 53px;
+    width: 1830px;
+    height: 416px;
 
     &:hover {
       cursor: url("../img/swiper.svg"), auto;
