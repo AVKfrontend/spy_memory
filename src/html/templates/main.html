@@ -1,0 +1,289 @@
+<main>
+  <!-- First screen -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero">
+        <div class="hero__hat-boy">
+          <div class="hat-man">
+            <picture class="hat-man__man">
+              <source srcset="img/hat-man_3x.webp" media="(min-width:3000px)">
+              <source srcset="img/hat-man_2x.webp" media="(min-width:1500px)">
+              <source srcset="img/hat-man_1x.webp" media="(min-width:300px)">
+              <source srcset="img/hat-man_05x.webp" media="(max-width:299px)">
+              <img src="img/hat-man_1x.jpg" alt="Spy with hat">
+            </picture>
+            <div class="hat-man__frame">
+              <picture class="hat-man__hat">
+                <source srcset="img/hat_3x.webp" media="(min-width:3000px)">
+                <source srcset="img/hat_2x.webp" media="(min-width:1500px)">
+                <source srcset="img/hat_1x.webp" media="(min-width:300px)">
+                <source srcset="img/hat_05x.webp" media="(max-width:299px)">
+                <img src="img/hat_3x.png" alt="Spy with hat in frame">
+              </picture>
+            </div>
+            <div class="hero__rating">
+              @@include("_stars.html")
+              327 ratings
+            </div>
+          </div>
+        </div>
+        <div class="hero__box">
+          @@include('_main-info.html', {"h": "h1"})
+        </div>
+      </div>
+    </div>
+    @@include("_smoke.html")
+  </section>
+  <div class="container">
+    @@include('_icon.html', {'img':'card.html'})
+    @@include('_icon.html', {'img':'clok.html'})
+  </div>
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="about">
+        <button tipe="batton" style="width: 100%;">
+          @@include('_long-icon.html', {
+          'label': 'Try it 100% Risk Free'
+          })
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- Others saying -->
+  <section id="reviews" class="reviews">
+    <h2 class="reviews__title">
+      What Others are
+      <span>Saying:</span>
+    </h2>
+    <div class="reviews__filde">
+      <div class="reviews__rating">
+        @@include("_stars.html")
+        1347 reviews
+      </div>
+      <div class="reviews__icon">
+        <img src="img/swiper.svg" alt="Swiping icon">
+      </div>
+    </div>
+    <ul class="reviews__swiper">
+      <li class="reviews__item">
+        <p class="reviews__text">
+          Ones of the best memory courses I've taken! It clearly teaches every technique and method all in one course.
+        </p>
+        <div class="reviews__footer">
+          <div class="reviews__img">
+            <img src="img/reviews1.webp" alt="Erol foto">
+          </div>
+          <div class="reviews__wrup">
+            <p class="reviews__name">Erol O.</p>
+            <span>12.09.2021</span>
+          </div>
+          <div class="reviews__mark">
+            @@include("svg/star.html")
+            <span>5.0</span>
+          </div>
+        </div>
+      </li>
+      <li class="reviews__item">
+        <p class="reviews__text">
+          I deeply recommend this course on
+          memory improvement. I use these
+          strategies in my everyday worklife;
+          it’s easy to apply. It’s important not
+          to feel rushed, just revisit and use
+          the techniques and soon you’ll find
+          great ways to implement them in
+          your day... more
+        </p>
+        <div class="reviews__footer">
+          <div class="reviews__img">
+            <img src="img/reviews2.webp" alt="Fredrik foto">
+          </div>
+          <div class="reviews__wrup">
+            <p class="reviews__name">Fredrik G.</p>
+            <span>12.09.2021</span>
+          </div>
+          <div class="reviews__mark">
+            @@include("svg/star.html")
+            <span>5.0</span>
+          </div>
+        </div>
+      </li>
+      <li class="reviews__item">
+        <p class="reviews__text">
+          An excellent course. There are many lessons and they are all very interesting. The lessons are very clear and
+          easy to
+          grasp. This course has everything. If you want to buy just one course for memory improvement - I warmly
+          recommend this
+          one!
+        </p>
+        <div class="reviews__footer">
+          <div class="reviews__img">
+            <img src="img/reviews3.webp" alt="Vladimir foto">
+          </div>
+          <div class="reviews__wrup">
+            <p class="reviews__name">Vladimir V.</p>
+            <span>12.09.2021</span>
+          </div>
+          <div class="reviews__mark">
+            @@include("svg/star.html")
+            <span>5.0</span>
+          </div>
+        </div>
+      </li>
+      <li class="reviews__item">
+        <p class="reviews__text">
+          Outstanding coverage of many
+          tools and techniques that has
+          allowed me to select the tool I
+          want in my memory and learning
+          toolbox.
+        </p>
+        <div class="reviews__footer">
+          <div class="reviews__img">
+            <img src="img/reviews4.webp" alt="Stephen foto">
+          </div>
+          <div class="reviews__wrup">
+            <p class="reviews__name">Stephen S.</p>
+            <span>12.09.2021</span>
+          </div>
+          <div class="reviews__mark">
+            @@include("svg/star.html")
+            <span>5.0</span>
+          </div>
+        </div>
+      </li>
+      <li class="reviews__item">
+        <p class="reviews__text">
+          It is a complete course over memory. Just what I was searching for. Thanks for your effort in put all the
+          pieces
+          together in order to improve my memory.
+        </p>
+        <div class="reviews__footer">
+          <div class="reviews__img">
+            <img src="img/reviews5.webp" alt="Vanessa foto">
+          </div>
+          <div class="reviews__wrup">
+            <p class="reviews__name">Vanessa Castro G.</p>
+            <span>12.09.2021</span>
+          </div>
+          <div class="reviews__mark">
+            @@include("svg/star.html")
+            <span>5.0</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <button type="button" class="reviews__btn">
+      @@include('_long-icon.html', {
+      'label': 'Write a customer review'
+      })
+    </button>
+  </section>
+  <!-- Repeat propouse -->
+  <section id="repeate">
+    <div class="container">
+      <div class="repeate">
+        <div class="repeate__info">
+          @@include('_main-info.html', {"h": "h2"})
+        </div>
+        <div class="repeate__box">
+          <picture class="repeate__img">
+            <source srcset="img/eye_2x.webp" media="(min-width:800px)">
+            <source srcset="img/eye_1x.webp" media="(max-width:799px)">
+            <img src="img/eye.png" alt="Spy eye">
+          </picture>
+        </div>
+        <div class="repeate__sektor">
+          @@include("svg/sektor.html")
+        </div>
+      </div>
+    </div>
+    @@include("_smoke.html")
+  </section>
+  <!-- Guarantee -->
+  <section id="guarantee">
+    <div class="container">
+      <div class="guarantee">
+        <div class="guarantee__wrupper">
+          @@include("svg/guarantee.html")
+          <div class="guarantee__box">
+            <h2 class="guarantee__title">30-Day Money-Back Guarantee</h2>
+            <p class="guarantee__text">
+              We want you to be 100% satisfied with the Spy Memory Course. If you are not, simply contact us within 30
+              days of your purchase and we will refund your money, no questions asked.
+            </p>
+          </div>
+        </div>
+        <div class="guarantee__bunner">
+          <picture class="">
+            <source media="(min-width: 770px)" srcset="img/grt_2x.png">
+            <source media="(max-width: 769px)" srcset="img/grt_1x.png">
+            <img src="img/grt_1x.png" alt="PayPal">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="spy007">
+      <img src="img/faq.webp" decoding="async" loading="lazy" srcset="
+      img/faq_576.webp 500w,
+      img/faq_1152.webp 1000w,
+      img/faq_2304.webp 2000w" alt="Spy 007">
+    </div>
+    <div class="spy006">
+      <img src="img/faq_smoke.webp" decoding="async" loading="lazy" srcset="
+      img/faq_smoke_560.webp 500w,
+      img/faq_smoke.webp 1000w" alt="Smoke">
+    </div>
+    <div class="faq">
+      <div class="container">
+        <h2 class="faq__title">Frequently Asked <span>Questions</span></h2>
+        <ul class="faq__list">
+          <li>
+            <div class="line"></div>
+            <button class="faq__btn" type="button">
+              <div class="faq__wrup">
+                <p class="faq__asc">Does this program have a money-back guarantee?</p>
+                <div class="faq__close">+
+                  <!-- @@include('svg/plus.html') -->
+                </div>
+              </div>
+              <span class="faq__ans">Of course, you can return money 30 days after purchase.</span>
+            </button>
+            <div class="line"></div>
+          </li>
+          <li>
+            <button class="faq__btn" type="button">
+              <div class="faq__wrup">
+                <p class="faq__asc">How can I access the course after purchasing it?</p>
+                <div class="faq__close">+
+                  <!-- @@include('svg/plus.html') -->
+                </div>
+              </div>
+              <span class="faq__ans">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+            </button>
+            <div class="line"></div>
+          </li>
+          <li>
+            <button class="faq__btn" type="button">
+              <div class="faq__wrup">
+                <p class="faq__asc">How fast I can implement this knowledge in real life?</p>
+                <div class="faq__close">+
+                  <!-- @@include('svg/plus.html') -->
+                </div>
+              </div>
+              <span class="faq__ans">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</span>
+            </button>
+            <div class="line"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <button class="up" type="button">
+    @@include('_icon.html', {'img':'up.html'})
+  </button>
+</main>

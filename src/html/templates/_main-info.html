@@ -1,0 +1,81 @@
+<div class="main-info">
+  @@if (h === 'h1') {
+  @@include('_h1-title.html')
+  }
+  @@if (h === 'h2') {
+  @@include('_h2-title.html')
+  }
+  <p class="main-info__text">
+    <span>
+      @@include("svg/line.html")
+    </span>
+    Train your memory like a CIA agent
+  </p>
+  <ul class="stage">
+    <li>
+      <div class="stage__ring">
+        <span>
+          @@include('svg/check.html')
+        </span>
+      </div>
+      <p class="stage__label">7 Techniques</p>
+    </li>
+    <li>
+      <div class="stage__ring">
+        <span>
+          @@include('svg/check.html')
+        </span>
+      </div>
+      <p class="stage__label">3 Tests</p>
+    </li>
+    <li>
+      <div class="stage__ring">
+        <span>
+          @@include('svg/check.html')
+        </span>
+      </div>
+      <p class="stage__label">14 Exercises</p>
+    </li>
+  </ul>
+  <div class="main-info__box">
+    <div class="price">
+      <p>$ 9,99</p>
+      <div class="price__wrupper">
+        <span class="price__old">$ 399</span>
+        <span class="price__off">80% off</span>
+      </div>
+    </div>
+    <div class="timer">
+      <p>1 day left at this price:</p>
+      <div class="timer__wrupper">
+        <p class="timer__count">
+          <span class="timer__hours">23</span>
+          :
+          <span class="timer__minutes">59</span>
+          :
+          <span class="timer__seconds">36</span>
+        </p>
+        <p class="timer__names">
+          <!-- <span></span> -->
+          hours
+          <span>minutes</span>
+          <!-- <span></span> -->
+          seconds
+        </p>
+      </div>
+      <div class="timer__corner">
+        <p class="timer__corner-text"> 80% off</p>
+      </div>
+      <div class="timer__corner-bg"></div>
+    </div>
+    <div class="action">
+      <button type="button" class="action__button">
+        @@include('_long-icon.html', {'label': 'Try it 100% Risk Free'})
+      </button>
+      <p class="action__guarantee">
+        <span>30-Day </span>
+        Money-Back Guarantee
+      </p>
+    </div>
+  </div>
+</div>
