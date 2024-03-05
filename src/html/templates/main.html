@@ -34,19 +34,129 @@
     </div>
     @@include("_smoke.html")
   </section>
-  <div class="container">
-    @@include('_icon.html', {'img':'card.html'})
-    @@include('_icon.html', {'img':'clok.html'})
-  </div>
+  <!-- Obtention -->
+  <section id="obtention">
+    <div class="container">
+      <div class="obtention">
+        <h2 class="obtention__title">
+          What will <span>you get:</span>
+        </h2>
+        <ul class="obtention__content">
+          <li class="obtention__item">
+            @@include('_icon.html', {'img':'clok.html'})
+            <div class="obtention__inner">
+              <h3 class="obtention__name">ABSORB</h3>
+              <span class="obtention__desc">skills or information faster</span>
+            </div>
+          </li>
+          <li class="obtention__item">
+            @@include('_icon.html', {'img':'card.html'})
+            <div class="obtention__inner">
+              <h3 class="obtention__name">DELIVER</h3>
+              <span class="obtention__desc">any speech or presentation without notes</span>
+            </div>
+          </li>
+          <li class="obtention__item">
+            @@include('_icon.html', {'img':'pen.html'})
+            <div class="obtention__inner">
+              <h3 class="obtention__name">NEVER FORGET</h3>
+              <span class="obtention__desc">a name, face, or date again</span>
+            </div>
+          </li>
+          <li class="obtention__item">
+            @@include('_icon.html', {'img':'book.html'})
+            <div class="obtention__inner">
+              <h3 class="obtention__name">LEARN</h3>
+              <span class="obtention__desc">anything 2-3x faster & make it “stick” in your memory</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
   <!-- About -->
   <section id="about">
     <div class="container">
       <div class="about">
         <button tipe="batton" style="width: 100%;">
           @@include('_long-icon.html', {
-          'label': 'Try it 100% Risk Free'
+          'label': 'Get Instant Access'
           })
         </button>
+      </div>
+    </div>
+  </section>
+  <!-- Catalog -->
+  <section id="catalog">
+    <div class="container">
+      <div class="catalog">
+        <div class="catalog__bg">
+          <picture class="catalog__invisible">
+            <source srcset="img/invisible_2x.webp" media="(min-width:1000px)">
+            <source srcset="img/invisible_1x.webp" media="(min-width:500px)">
+            <source srcset="img/invisible_05x.webp" media="(max-width:499px)">
+            <img src="img/invisible.png" alt="Invisible with hat">
+          </picture>
+        </div>
+        <h2 class="catalog__title">
+          <span>About</span> 7 Technics
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <div class="features">
+        <div class="features__wrap">
+          <div class="features__inner">
+            <span class="features__icon">
+              @@include("svg/time.html")
+            </span>
+            <p class="features__text">
+              You can start using these techniques immediately, and you will <span>see results within a few days.</span>
+            </p>
+          </div>
+          <div class="features__inner">
+            <span class="features__icon">
+              @@include("svg/list.html")
+            </span>
+            <p class="features__text">
+              Each technique has <span>2 exercises</span> that help you to understand how to use them in real life.
+            </p>
+          </div>
+        </div>
+        <button type="button" class="features__btn">
+          @@include('_long-icon.html', {'label':'Get Instant Access'})
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- Quote -->
+  <section id="quote">
+    <div class="quote">
+      <picture class="quote__bg">
+        <source srcset="img/smoke-quote_2x.webp" media="(min-width:1000px)">
+        <source srcset="img/smoke-quote_1x.webp" media="(max-width:999px)">
+        <img src="img/smoke-quote.png" alt="Smoke on background">
+      </picture>
+      <div class="quote__holder">
+        @@include("_stars.html")
+        <h2 class="quote__text">
+          “The only way to win is to learn faster than anyone else”
+        </h2>
+        <div class="quote__footer">
+          <div class="quote__avatar">
+            <img src="img/eric.webp" alt="Eric Ries avatar">
+          </div>
+          <div class="quote__inner">
+            <h4 class="quote__name">Eric Ries</h4>
+            <p class="quote__desc">
+              The Lean Startup: How Today’s Entrepreneurs Use Continuous Innovation to Create Radically Successful
+              Businesses
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

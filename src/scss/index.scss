@@ -83,6 +83,7 @@
 
   &__bg {
     @extend %icon-bg;
+    @extend %up-poligon;
     position: absolute;
   }
 
@@ -91,14 +92,20 @@
     width: 100%;
     height: 100%;
     mix-blend-mode: lighten;
-    opacity: 0.5;
+    // opacity: 0.5;
     background: url('/img/finger.png') no-repeat center/cover;
+    // @extend %up-poligon;
     pointer-events: none;
   }
 
   &__img {
     z-index: 1;
     pointer-events: none;
+    width: 45%;
+
+    svg {
+      width: 100%;
+    }
   }
 
   &__clok {
@@ -116,6 +123,7 @@
 
   &__bg {
     @extend %icon-bg;
+    @extend %l-poligon;
     @extend %flex-center;
   }
 
@@ -683,13 +691,287 @@ button {
   }
 }
 
+#obtention {
+  padding: clamp(30px, 16vw, 100px) 0;
+  background-color: $bg-dark-color;
+}
+
+.obtention {
+  &__title {
+    @extend %section-title;
+    width: fit-content;
+    margin: 0 auto;
+
+    @media(min-width:367px) {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__content {
+    @include flex-gap(40px);
+    flex-wrap: wrap;
+    padding-top: clamp(30px, 10.667vw, 60px);
+  }
+
+  &__item {
+    flex: 0 0 calc((100% - 3 * 40px) / 4);
+    text-align: center;
+
+    .icon {
+      margin: 0 auto;
+    }
+  }
+
+  &__inner {
+    max-width: 260px;
+    margin-top: 28px;
+  }
+
+  &__name {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 140%;
+    text-transform: uppercase;
+  }
+
+  &__desc {
+    font-size: 18px;
+    line-height: 140%;
+    color: $grey-font-color;
+  }
+
+  @media(max-width:1035px) {
+    &__content {
+      row-gap: 23px;
+    }
+
+    &__item {
+      flex-basis: calc((100% - 40px) / 2);
+      display: flex;
+      align-items: start;
+      text-align: left;
+
+      .icon {
+        margin: 0;
+        margin-right: clamp(20px, 5.333vw, 30px);
+        flex-shrink: 0;
+      }
+    }
+
+    &__inner {
+      margin: 0;
+    }
+
+    &__name {
+      font-size: 25px;
+    }
+
+    &__desc {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width:705px) {
+    &__contern {
+      gap: 30px;
+    }
+
+    &__item {
+      flex-basis: 100%;
+    }
+
+    .icon {
+      margin-right: clamp(20px, 20vw - 45px, 150px);
+    }
+  }
+
+  @media (max-width:450px) {
+    .icon {
+      width: 60px;
+    }
+
+    &__name {
+      font-size: 22px;
+    }
+
+    &__desc {
+      display: block;
+      width: 64vw;
+      font-size: 16px;
+    }
+  }
+}
+
+#about {
+  display: none;
+}
+
+#catalog {
+  padding: 131px 0px 721px;
+  position: relative;
+}
+
+.catalog {
+  &__title {
+    @extend %section-title;
+    margin: 0 auto;
+    width: fit-content;
+
+    @media(min-width:340px) {
+      span {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1100px;
+    z-index: -3;
+  }
+}
+
+#features {
+  padding-top: clamp(30px, 13.333vw, 64px);
+  background: linear-gradient(180deg, $bg-dark-color 0%, #2222 100%);
+}
+
+.features {
+  &__wrap {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  &__inner {
+    @include flex-gap(30px);
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__icon {
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    max-width: 357px;
+    font-size: 16px;
+    line-height: 140%;
+    color: $grey-font-color;
+
+    span {
+      font-weight: 700;
+      color: $lite-font-color;
+    }
+  }
+
+  &__btn {
+    display: block;
+    width: 257px;
+    margin: 0 auto;
+    margin-top: clamp(30px, 10.667vw, 50px);
+  }
+
+  @media(min-width:650px) {
+    &__text {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width:700px) {
+    &__wrap {
+      @include flex-gap(clamp(20px, 4.445vw, 64px))
+    }
+  }
+}
+
+#quote {
+  // display: none;
+  padding-top: clamp(60px, 12.987vw, 112px);
+}
+
+.quote {
+  position: relative;
+  width: clamp(375px, 89.61vw, 960px);
+  // aspect-ratio: 960 / 501;
+  margin: 0 auto;
+
+  &__bg {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 944px;
+    z-index: -1;
+    overflow: hidden;
+
+    img {
+      width: 1645px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      // object-fit: cover;
+    }
+  }
+
+  &__holder {
+    width: 100%;
+    height: 10 0%;
+    background-color: $bg-dark-color;
+    padding: 7.708% 9.06%;
+  }
+
+  &__text {
+    @extend %section-title;
+    margin-top: 24px;
+  }
+
+  &__footer {
+    margin-top: 38px;
+    @include flex-gap(27px);
+    align-items: start;
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    width: 86px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__desc {
+    max-width: 601px;
+    font-size: 18px;
+    line-height: 140%;
+    color: $grey-font-color;
+  }
+}
+
 #reviews {
   padding-top: 100px;
 }
 
 .reviews {
-  overflow: hidden;
-
   &__title {
     @extend %section-title;
     text-align: center;
@@ -739,11 +1021,8 @@ button {
   }
 
   &__swiper {
-    // display: flex;
-    // gap: 20px;
-    // width: fit-content;
     margin-top: 53px;
-    width: 1830px;
+    width: 100%;
     height: 416px;
 
     &:hover {
@@ -821,6 +1100,7 @@ button {
 }
 
 #repeate {
+  overflow: hidden;
   position: relative;
 
   .smoke {
@@ -1031,12 +1311,17 @@ button {
 }
 
 .guarantee {
-  @include flex-gap(20px);
-  justify-content: space-between;
+  @include flex-gap(80px);
+  // justify-content: space-between;
   padding: 75px 0;
+  align-items: center;
 
   &__wrupper {
     @include flex-gap(33px);
+
+    svg {
+      width: fit-content;
+    }
   }
 
   &__title {
@@ -1221,7 +1506,8 @@ button {
 .spy007 {
   position: absolute;
   top: 0;
-  left: clamp(0px, calc(42.308vw - 20.8px), 630px);
+  // left: clamp(0px, calc(42.308vw - 20.8px), 630px);
+  left: clamp(0px, calc((100vw - 770px) * 0.48507 + 305px), 630px);
   width: 80%;
   min-width: 744px;
   // aspect-ratio: 810/759;
