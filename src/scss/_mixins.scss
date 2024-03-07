@@ -2,3 +2,10 @@
   display: flex;
   gap: $gap;
 }
+
+@function flexible($p11, $p12, $p21, $p22) {
+  $dif1: $p11 - $p21;
+  $dif2: $p12 - $p22;
+  $div: calc($dif2 / $dif1);
+  @return calc((100vw - $p21) * $div + $p22);
+}
