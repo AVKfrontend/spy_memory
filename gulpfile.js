@@ -12,7 +12,7 @@ const del = require('del');
 
 
 const src = "src/";
-const dist = "dist/";
+const dist = "docs/";
 const dist_min = "dist_min/";
 
 const path = {
@@ -51,7 +51,7 @@ const path = {
 }
 
 const clean = () => {
-  return del([dist])
+  return del([dist, dist_min])
 }
 
 const webServer = () => {
