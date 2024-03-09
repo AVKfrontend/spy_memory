@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,700;1,700;1,900&display=swap");
-.section-title, .obtention__title, .catalog__title, .quote__text, .reviews__title, .faq__title {
+.section-title, .obtention__title, .audience__title, .catalog__title, .quote__text, .reviews__title, .faq__title {
   font-family: "Roboto", sans-serif;
   font-style: italic;
   font-size: 58px;
@@ -8,12 +8,12 @@
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
-.section-title span, .obtention__title span, .catalog__title span, .quote__text span, .reviews__title span, .faq__title span {
+.section-title span, .obtention__title span, .audience__title span, .catalog__title span, .quote__text span, .reviews__title span, .faq__title span {
   display: block;
   color: #f13131;
 }
 @media (max-width: 680px) {
-  .section-title, .obtention__title, .catalog__title, .quote__text, .reviews__title, .faq__title {
+  .section-title, .obtention__title, .audience__title, .catalog__title, .quote__text, .reviews__title, .faq__title {
     font-size: clamp(35px, 9.3333vw, 58px);
   }
 }
@@ -88,6 +88,16 @@ body {
 picture img {
   width: 100%;
   height: 100%;
+}
+
+body {
+  overflow: scroll;
+}
+@supports (scrollbar-gutter: stable) {
+  body {
+    overflow: auto;
+    scrollbar-gutter: stable;
+  }
 }
 
 .banner {
@@ -768,14 +778,156 @@ button .l-icon__bg:hover {
   width: 42.857%;
 }
 
+#audience {
+  padding-top: 100px;
+}
+@media (max-width: 729px) {
+  #audience {
+    padding-top: 60px;
+  }
+}
+
+.audience {
+  position: relative;
+}
+.audience__title span {
+  display: inline-block;
+}
+.audience__list {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 33px;
+}
+.audience__item {
+  display: flex;
+  gap: 25px;
+  align-items: start;
+  width: 100%;
+}
+.audience__item .icon {
+  flex-shrink: 0;
+}
+.audience__name {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+.audience__text {
+  margin-top: 11px;
+  line-height: 140%;
+  color: #999;
+}
+.audience__bg {
+  width: 100%;
+}
+.audience__image {
+  position: relative;
+  width: 189.3333vw;
+  margin-left: -80vw;
+}
+.audience__collar {
+  position: relative;
+  width: 100%;
+  z-index: -5;
+}
+.audience__frame {
+  position: absolute;
+  top: 21.5%;
+  left: 54.0067%;
+  width: 28.13022%;
+  height: 57.125%;
+  border: 4px solid #f13131;
+  box-shadow: 0 0 40px #f13131;
+  z-index: -4;
+}
+.audience__man {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -3;
+}
+.audience__smoke {
+  position: absolute;
+  bottom: -608px;
+  right: 0px;
+  width: 100vw;
+  height: 744px;
+  overflow: hidden;
+}
+.audience__smoke img {
+  position: absolute;
+  bottom: 0px;
+  right: -326px;
+  width: 1246px;
+}
+@media (max-width: 499px) {
+  .audience__item .icon {
+    width: 60px;
+  }
+  .audience__name {
+    font-size: 22px;
+  }
+  .audience__text {
+    font-size: 16px;
+  }
+}
+@media (max-width: 499px) and (max-width: 729px) {
+  .audience__title {
+    text-align: center;
+  }
+}
+@media (max-width: 1299px) {
+  .audience__list {
+    margin-left: clamp(0px, (100vw - 900px) * 0.313283208 + 0px, 125px);
+  }
+}
+@media (min-width: 730px) {
+  .audience__list {
+    width: 360px;
+    margin-top: 60px;
+  }
+  .audience__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .audience__image {
+    position: absolute;
+    top: clamp(20px, (100vw - 770px) * -0.1537313433 + 123px, 123px);
+    left: clamp(-245px, (100vw - 770px) * 0.6955223881 - 145px, 1000px);
+    width: clamp(1098px, (100vw - 770px) * 0.1492537313 + 1098px, 1198px);
+    margin: 0;
+  }
+  .audience__smoke {
+    bottom: clamp(-330px, (100vw - 770px) * -0.1686567164 - 217px, -217px);
+  }
+  .audience__smoke img {
+    right: clamp(-238px, (100vw - 770px) * 0.2865671642 - 238px, -46px);
+  }
+}
+@media (min-width: 1300px) {
+  .audience__list {
+    width: 760px;
+    row-gap: 70px;
+  }
+  .audience__item {
+    width: 360px;
+  }
+}
+
 #catalog {
-  padding-top: 131px;
+  padding-top: clamp(100px, (100vw - 770px) * 0.0462686567 + 100px, 131px);
   padding-bottom: calc((100vw - 770px) * 0.1537313433 + 618px);
   position: relative;
   overflow: hidden;
 }
 @media (max-width: 729px) {
   #catalog {
+    padding-top: 22px;
     padding-bottom: 364px;
   }
 }
@@ -950,6 +1102,7 @@ button .l-icon__bg:hover {
   left: 50%;
   transform: translateX(-50%);
   width: calc((100vw - 375px) * 0.4798122066 + 589px);
+  max-width: 1100px;
   z-index: -3;
 }
 .catalog__man {
@@ -1044,7 +1197,7 @@ button .l-icon__bg:hover {
   top: 58%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
+  width: 98vw;
   height: 944px;
   z-index: -1;
   overflow: hidden;
