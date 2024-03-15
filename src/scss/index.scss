@@ -6,21 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,700;1,700;1,900&display=swap');
 
-
-.container {
-  width: clamp(150px, 80.556%, 1160px);
-  margin: 0 auto;
-
-  @media (max-width: 840px) {
-    width: 89.6104%;
-  }
-
-  //--------------------------------------//
-  @media (max-width: 480px) {
-    width: 89.6%;
-  }
-}
-
+//--------------------------------------//
 .logo {
   a {
     display: flex;
@@ -46,7 +32,7 @@
     line-height: 140%;
     text-transform: uppercase;
 
-    @media (max-width: 480px) {
+    @media (max-width:480px) {
       font-size: 14px;
     }
   }
@@ -92,9 +78,7 @@
     width: 100%;
     height: 100%;
     mix-blend-mode: lighten;
-    // opacity: 0.5;
     background: url('/img/finger.png') no-repeat center/cover;
-    // @extend %up-poligon;
     pointer-events: none;
   }
 
@@ -177,7 +161,7 @@ button {
     bottom: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width:480px) {
     left: 20px;
   }
 }
@@ -308,7 +292,6 @@ button {
   }
 
   &__old {
-    // margin: 0 10px 0 20px;
     font-size: 20px;
     font-weight: 700;
     line-height: 140%;
@@ -360,7 +343,7 @@ button {
       display: none;
     }
 
-    @media(min-width: 720px) {
+    @media(min-width:700px) {
       display: flex;
       align-items: center;
       gap: 27px;
@@ -388,17 +371,45 @@ button {
   }
 }
 
-.menu {
+.mobile-menu {
+  overflow: hidden;
 
-  &__items {
-    display: none;
+  .menu {
+    &__wrapper {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &__burger {
+      span {
+        background-color: transparent;
+
+        &::before {
+          transform: rotate(-45deg);
+          top: 0;
+        }
+
+        &::after {
+          transform: rotate(45deg);
+          bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.menu {
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    @extend %flex-center;
   }
 
   &__item {
-
     a {
       padding: 5px 0;
-      font-size: 18px;
       line-height: 140%;
       text-decoration: underline transparent;
       transition: text-decoration 0.3s;
@@ -407,14 +418,14 @@ button {
         @extend %hover;
       }
     }
-
   }
 
   &__burger {
     position: relative;
     width: 40px;
-    height: 22px;
+    height: 40px;
     margin-left: 20px;
+    z-index: 10;
 
     span {
       @extend %burger-element;
@@ -423,19 +434,58 @@ button {
         content: "";
         @extend %burger-element;
         top: -11px;
+        transition: transform 0.3s;
       }
 
       &::after {
         content: "";
         @extend %burger-element;
         bottom: -9px;
+        transition: transform 0.3s;
       }
     }
   }
 
-  @media(min-width: 1150px) {
+  @media(max-width:959px) {
+    &__wrapper {
+      min-height: 100vh;
+      background-color: $bg-color;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+      overflow: auto;
+    }
+
     &__items {
-      @include flex-gap(51px);
+      padding: 50px 0;
+    }
+
+    &__item {
+      text-align: center;
+
+      &:not(:first-child) {
+        margin-top: 51px;
+      }
+    }
+  }
+
+  @media(min-width:960px) {
+    width: calc(100% - 295px);
+
+    &__wrapper {
+      position: static;
+    }
+
+    &__items {
+      display: flex;
+      justify-content: space-between;
+      max-width: 683px;
+      width: 100%;
+      margin-left: auto;
+    }
+
+    &__item {
+      font-size: 18px;
     }
 
     &__burger {
@@ -451,7 +501,7 @@ button {
   right: 0;
   padding: 10px 0;
   z-index: 11;
-  // filter: drop-shadow(5px 5px 20px $bg-color);
+  filter: drop-shadow(5px 5px 20px $bg-color);
   background: linear-gradient(0deg, #2220 0%, #222a 30%, #222a 70%, #2224 100%);
 }
 
@@ -495,7 +545,6 @@ button {
     aspect-ratio: 416 / 552;
     margin: 0 auto;
     transform: translate(12px);
-    // margin-left: 18px;
 
     &__man {
       position: absolute;
@@ -512,7 +561,6 @@ button {
         width: 100%;
         height: 100%;
         @extend %hat-man-gradient;
-        // transform: rotate(-180deg);
       }
     }
 
@@ -546,6 +594,10 @@ button {
 
     svg {
       width: 22px;
+    }
+
+    @media(max-width:339px) {
+      display: none;
     }
   }
 
@@ -631,7 +683,7 @@ button {
     }
   }
 
-  @media(min-width: 1380px) {
+  @media(min-width: 1320px) {
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
@@ -804,10 +856,6 @@ button {
   }
 }
 
-#about {
-  display: none;
-}
-
 .c-icon {
   @extend %flex-center;
   width: 35px;
@@ -817,6 +865,253 @@ button {
 
   svg {
     width: 42.857%;
+  }
+}
+
+#about {
+  position: relative;
+  padding-top: clamp(125px, flexible(1440px, 125px, 770px, 333px), 333px);
+
+  @media(max-width:770px) {
+    padding-top: clamp(306px, flexible(770px, 333px, 375px, 306px), 333px);
+  }
+}
+
+.about {
+  margin-left: clamp(0px, flexible(955px, 600px, 770px, 0px), calc(100% - 543px)); //600px
+
+  &__spy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 691px;
+    z-index: -1;
+    overflow-x: hidden;
+
+    img {
+      position: absolute;
+      top: clamp(-72px, flexible(1440px, 0px, 770px, -72px), 0px);
+      left: 0;
+      width: clamp(776px, flexible(1440px, 951px, 770px, 776px), 951px);
+      height: auto;
+
+      @media(max-width:770px) {
+        top: clamp(-72px, flexible(770px, -72px, 375px, -45px), -45px);
+        left: clamp(-68px, flexible(770px, 0px, 375px, -68px), 0px);
+        width: clamp(511px, flexible(770px, 776px, 375px, 511px), 776px);
+      }
+    }
+  }
+
+  &__title {
+    @extend %section-title;
+    position: relative;
+    width: fit-content;
+
+    svg {
+      position: absolute;
+      top: -103.279%;
+      left: -31.341%;
+      width: 108.957%;
+      height: 305.4187%;
+
+      @media(max-width:365px) {
+        top: -126.3%;
+      }
+    }
+  }
+
+  &__accent-text {
+    margin-top: clamp(46px, flexible(770px, 52px, 375px, 46px), 52px);
+    padding-left: clamp(38px, flexible(1440px, 38px, 770px, 47px), 47px);
+    font-size: clamp(22px, flexible(770px, 29px, 375px, 22px), 29px);
+    font-style: italic;
+    line-height: 140%;
+    border-left: 2px solid $lite-font-color;
+
+    @media(max-width:770px) {
+      padding-left: clamp(20px, flexible(770px, 47px, 375px, 20px), 47px);
+    }
+  }
+
+  &__text {
+    margin-top: clamp(20px, flexible(770px, 31px, 375px, 20px), 31px);
+    margin-bottom: clamp(30px, flexible(770px, 42px, 375px, 30px), 42px);
+    font-size: clamp(16px, flexible(770px, 20px, 375px, 16px), 20px);
+    line-height: 140%;
+    color: $grey-font-color;
+  }
+
+  &__btn {
+    width: 257px;
+    max-width: 100%;
+  }
+}
+
+#learn {
+  position: relative;
+  padding-top: clamp(100px, flexible(1400px, 145px, 770px, 100px), 145px);
+  padding-bottom: clamp(100px, flexible(1400px, 108px, 770px, 100px), 108px);
+
+  @media(max-width:680px) {
+    padding: clamp(60px, flexible(680px, 100px, 375px, 60px), 100px) 0px;
+  }
+}
+
+.learn {
+  &__bg {
+    position: absolute;
+    left: 0;
+    bottom: clamp(281px, flexible(1440px, 281px, 770px, 348px), 348px);
+    width: 100%;
+    height: 994px;
+    overflow-x: hidden;
+    z-index: -1;
+
+    img {
+      position: absolute;
+      bottom: 0;
+      left: clamp(-480px, flexible(1440px, 143px, 770px, -480px), 143px);
+      width: 1645px;
+      transform: rotate(180deg);
+    }
+
+    @media(max-width:770px) {
+      bottom: clamp(209px, flexible(770px, 348px, 375px, 209px), 348px);
+
+      img {
+        left: clamp(-635px, flexible(770px, -480px, 375px, -635px), -480px);
+      }
+    }
+  }
+
+  &__title {
+    @extend %section-title;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  &__content {
+    margin: 35px 0px 60px;
+
+    @media(max-width:680px) {
+      margin-top: clamp(35px, flexible(680px, 35px, 375px, 40px), 40px);
+      margin-bottom: clamp(40px, flexible(680px, 60px, 375px, 40px), 60px);
+    }
+  }
+
+  &__content {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(auto-fit, 31.0345%);
+    row-gap: flexible(770px, 40px, 375px, 30px);
+
+    @media(max-width:840px) {
+      grid-template-columns: repeat(auto-fit, 48.1159%);
+    }
+
+    @media(max-width:680px) {
+      display: block;
+    }
+  }
+
+  @media(max-width:680px) {
+    &__item {
+      @include flex-gap(12px);
+      align-items: center;
+
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 80px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 105%;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, #fff 5%, rgba(255, 255, 255, 0) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    opacity: 0.4;
+  }
+
+  &__text {
+    margin-top: 12px;
+    line-height: 140%;
+    color: $grey-font-color;
+
+    span {
+      color: $lite-font-color;
+    }
+
+    @media(max-width:680px) {
+      margin-top: 0;
+      font-size: clamp(13px, flexible(680px, 20px, 375px, 16px), 20px);
+    }
+  }
+
+  &__btn {
+    display: block;
+    max-width: 100%;
+    width: 284px;
+    margin: 0 auto;
+  }
+}
+
+#trusted {
+  padding: clamp(100px, flexible(1440px, 110px, 770px, 100px), 110px) 0px;
+  background-color: $bg-dark-color;
+
+  @media(max-width:680px) {
+    padding: clamp(60px, flexible(680px, 100px, 375px, 60px), 100px) 0px;
+  }
+}
+
+.trusted {
+  &__title {
+    @extend %section-title;
+    text-align: center;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  &__holder {
+    @include flex-gap(10px);
+    row-gap: 50px;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: clamp(40px, flexible(1440px, 44px, 770px, 40px), 44px);
+
+    @media(max-width:680px) {
+      row-gap: clamp(30px, flexible(680px, 50px, 375px, 30px), 50px);
+      margin-top: clamp(30px, flexible(680px, 40px, 375px, 30px), 40px);
+    }
+  }
+
+  &__group {
+    max-width: calc(50% - 5px);
+    opacity: 0.3;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      width: 100%;
+    }
   }
 }
 
@@ -830,7 +1125,6 @@ button {
 
 .audience {
   position: relative;
-  // overflow: hidden;
 
   &__title {
     @extend %section-title;
@@ -871,13 +1165,13 @@ button {
   }
 
   &__bg {
-    // width: 100vw;
     width: 100%;
+    height: 100%;
+    overflow: hidden;
   }
 
   &__image {
     position: relative;
-    // width: 710px;
     width: 189.3333vw;
     margin-left: -80vw;
   }
@@ -920,11 +1214,10 @@ button {
       bottom: 0px;
       right: -326px;
       width: 1246px;
-      // height: 100%;
     }
   }
 
-  @media(max-width:499px) {
+  @media(max-width:480px) {
     &__item {
       .icon {
         width: 60px;
@@ -938,11 +1231,11 @@ button {
     &__text {
       font-size: 16px;
     }
+  }
 
-    @media(max-width:729px) {
-      &__title {
-        text-align: center;
-      }
+  @media(max-width:729px) {
+    &__title {
+      text-align: center;
     }
   }
 
@@ -1024,6 +1317,10 @@ button {
 
   &__item {
     @include flex-gap(20px);
+
+    .c-icon {
+      flex-shrink: 0;
+    }
   }
 
   &__line {
@@ -1153,9 +1450,6 @@ button {
 
         &--r45 {
           @extend %r45;
-          // margin-top: 30px;
-          // margin-left: 18px;
-          // transform: rotate(-45deg);
         }
       }
 
@@ -1258,7 +1552,6 @@ button {
     left: 50%;
     transform: translateX(-50%);
     font-family: $second-font;
-    // font-size: 350px;
     font-size: flexible(1440px, 350px, 375px, 131px);
     font-weight: 900;
     font-style: italic;
@@ -1331,41 +1624,41 @@ button {
 }
 
 #quote {
-  // display: none;
+  position: relative;
   padding-top: clamp(60px, 12.987vw, 112px);
 }
 
 .quote {
-  position: relative;
   width: clamp(375px, 89.61vw, 960px);
-  // aspect-ratio: 960 / 501;
+  max-width: 100vw;
   margin: 0 auto;
 
   &__bg {
     position: absolute;
-    top: 58%;
+    top: clamp(-170px, flexible(1440px, -93px, 770px, -170px), -93px);
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 98vw;
-    height: 944px;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 994px;
     z-index: -1;
     overflow: hidden;
 
     img {
       width: 1645px;
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 50%;
-      transform: translate(-50%, -50%);
-      // object-fit: cover;
+      transform: translateX(-50%);
     }
   }
 
   &__holder {
-    width: 100%;
-    height: 10 0%;
     background-color: $bg-dark-color;
-    padding: 7.708% 9.06%;
+    padding: 7.708% 7.5%;
+
+    @media(max-width:400px) {
+      padding: 7.708% 5.867%;
+    }
   }
 
   &__text {
@@ -1398,10 +1691,14 @@ button {
   }
 
   &__desc {
-    max-width: 601px;
+    max-width: 500px;
     font-size: 18px;
     line-height: 140%;
     color: $grey-font-color;
+
+    @media(max-width:473px) {
+      font-size: 16px;
+    }
   }
 }
 
@@ -1414,7 +1711,7 @@ button {
     @extend %section-title;
     text-align: center;
 
-    @media(min-width:1000px) {
+    @media(min-width:991px) {
       span {
         display: inline-block;
       }
@@ -1444,7 +1741,7 @@ button {
       }
     }
 
-    @media(max-width:500px) {
+    @media(max-width:550px) {
       flex-direction: column;
       align-items: start;
       gap: 6px;
@@ -1476,19 +1773,29 @@ button {
     flex-direction: column;
     justify-content: space-between;
     padding: 27px 32px 38px;
-
-    // &>* {
-    //   width: 100%;
-    // }
   }
 
   &__text {
     max-height: 261px;
     line-height: 140%;
     color: $grey-font-color;
-    overflow: auto;
+    overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+  }
 
+  &__more-btn {
+    display: block;
+    width: fit-content;
+    color: $accent-color;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.3s;
+
+    &:hover {
+      border-bottom-color: $accent-color;
+    }
   }
 
   &__footer {
@@ -1533,6 +1840,7 @@ button {
   &__btn {
     @extend %btn-in-center;
     width: 303px;
+    max-width: 90%;
     margin-top: 53px;
   }
 }
@@ -1590,7 +1898,6 @@ button {
       position: absolute;
       left: 0;
       right: 0;
-      // top: 686px;
       bottom: 130px;
       margin: 0;
     }
@@ -1615,7 +1922,7 @@ button {
     display: none;
   }
 
-  @media(min-width: 720px) {
+  @media(min-width:700px) {
     padding: 100px 0;
     text-align: left;
 
@@ -1697,12 +2004,12 @@ button {
     }
   }
 
-  @media(min-width: 1380px) {
+  @media(min-width:1320px) {
     padding: 164px 0 154px;
 
     &__box {
       width: 631px;
-      right: -68px; //72px-140px
+      right: -68px;
       bottom: 28px;
     }
 
@@ -1750,7 +2057,6 @@ button {
 
 .guarantee {
   @include flex-gap(80px);
-  // justify-content: space-between;
   padding: 75px 0;
   align-items: center;
 
@@ -1852,7 +2158,6 @@ button {
 
   .line {
     width: 100%;
-    // max-width: 736px;
     height: 1px;
     background-color: #fff;
     opacity: 0.3;
@@ -1894,10 +2199,10 @@ button {
     width: 40px;
     aspect-ratio: 1;
     @extend %flex-center;
-    // margin-left: 15px;
     font-size: 40px;
     line-height: 100%;
     transition: background-color .4s, transform .4s;
+    z-index: 1;
 
     &:hover {
       background-color: $accent-color;
@@ -1944,11 +2249,9 @@ button {
 .spy007 {
   position: absolute;
   top: 0;
-  // left: clamp(0px, calc(42.308vw - 20.8px), 630px);
   left: clamp(0px, calc((100vw - 770px) * 0.48507 + 305px), 630px);
   width: 80%;
   min-width: 744px;
-  // aspect-ratio: 810/759;
 
   img {
     width: 100%;
@@ -1983,7 +2286,6 @@ button {
   padding-top: 63px;
   display: flex;
   justify-content: space-between;
-  // gap: 97px;
 
   &__blok {
     width: 210px;
@@ -1992,7 +2294,7 @@ button {
       padding-right: 7px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width:480px) {
       width: 165px;
     }
   }
@@ -2027,12 +2329,17 @@ button {
 }
 
 .copy {
+  margin-top: clamp(0px, flexible(1440px, 0px, 770px, 34px), 34px);
   padding: 10px 0 44px;
   font-size: 18px;
   line-height: 150%;
   color: #777;
 
-  @media (max-width: 480px) {
+  @media (max-width:770px) {
+    margin-top: clamp(20px, flexible(770px, 34px, 375px, 20px), 34px);
+  }
+
+  @media (max-width:480px) {
     text-align: end;
   }
 }

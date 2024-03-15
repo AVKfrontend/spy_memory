@@ -76,13 +76,119 @@
   </section>
   <!-- About -->
   <section id="about">
+    <picture class="about__spy">
+      <source srcset="img/about-man_2x.webp" media="(min-width:1000px)">
+      <source srcset="img/about-man_1x.webp" media="(min-width:500px)">
+      <source srcset="img/about-man_05x.webp" media="(max-width:499px)">
+      <img src="img/about-man.png" alt="Man with audiofon">
+    </picture>
     <div class="container">
       <div class="about">
-        <button tipe="batton" style="width: 100%;">
+        <h1 class="about__title">
+          About spy memory
+          @@include("svg/noose.html")
+        </h1>
+        <p class="about__accent-text">
+          The course is a condensed guide to memory techniques that the CIA service uses to train their spies.
+        </p>
+        <p class="about__text">
+          The course covers topics such as how to improve your memory, how to remember important information, and how to
+          effectively use memory techniques in your work.
+        </p>
+        <button tipe="batton" class="about__btn">
           @@include('_long-icon.html', {
           'label': 'Get Instant Access'
           })
         </button>
+      </div>
+    </div>
+  </section>
+  <!-- Learn -->
+  <section id="learn">
+    <picture class="learn__bg">
+      <source srcset="img/smoke-quote_2x.webp" media="(min-width:1000px)">
+      <source srcset="img/smoke-quote_1x.webp" media="(max-width:999px)">
+      <img src="img/smoke-quote.png" alt="Smoke on background of list">
+    </picture>
+    <div class="container">
+      <div class="learn">
+        <h2 class="learn__title">
+          What you'll <span>learn</span>
+        </h2>
+        <ul class="learn__content">
+          <li class="learn__item">
+            <h3 class="learn__subtitle">01</h3>
+            <div class="learn__text">
+              Learn how <span>to create a “memory palace”</span> to store and recall large amounts of information
+            </div>
+          </li>
+          <li class="learn__item">
+            <h3 class="learn__subtitle">02</h3>
+            <div class="learn__text">
+              Learn <span>special techniques</span> to remember faces, names, numbers, and other important details
+            </div>
+          </li>
+          <li class="learn__item">
+            <h3 class="learn__subtitle">03</h3>
+            <div class="learn__text">
+              <span>Learn</span> how to improve your memory capacity and capability
+            </div>
+          </li>
+          <li class="learn__item">
+            <h3 class="learn__subtitle">04</h3>
+            <div class="learn__text">
+              Learn how <span>improve your concentration</span> and focus to better remember information
+            </div>
+          </li>
+          <li class="learn__item">
+            <h3 class="learn__subtitle">05</h3>
+            <div class="learn__text">
+              Learn how to <span>apply memory techniques</span> in real-world scenarios
+            </div>
+          </li>
+        </ul>
+        <button type="button" class="learn__btn">
+          @@include('_long-icon.html', {
+          'label': 'Try Today & Save 90%'
+          })
+        </button>
+      </div>
+    </div>
+  </section>
+  <!-- Trusted -->
+  <section id="trusted">
+    <div class="container">
+      <div class="trasted">
+        <h2 class="trusted__title">
+          <span>TRUSTED</span> BY:
+        </h2>
+        <ul class="trusted__holder">
+          <li class="trusted__group">
+            <a href="#">
+              @@include("svg/harvard.html")
+            </a>
+          </li>
+          <li class="trusted__group">
+            <a href="#">
+              @@include("svg/morgan.html")
+            </a>
+          </li>
+          <li class="trusted__group">
+            <a href="#">
+              @@include("svg/google.html")
+            </a>
+          </li>
+          <li class="trusted__group">
+            <a href="#">
+              @@include("svg/kgb.html")
+            </a>
+          </li>
+          <li class="trusted__group">
+            <a href="#">
+              @@include("svg/robbins.html")
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -261,12 +367,12 @@
   </section>
   <!-- Quote -->
   <section id="quote">
+    <picture class="quote__bg">
+      <source srcset="img/smoke-quote_2x.webp" media="(min-width:1000px)">
+      <source srcset="img/smoke-quote_1x.webp" media="(max-width:999px)">
+      <img src="img/smoke-quote.png" alt="Smoke on background">
+    </picture>
     <div class="quote">
-      <picture class="quote__bg">
-        <source srcset="img/smoke-quote_2x.webp" media="(min-width:1000px)">
-        <source srcset="img/smoke-quote_1x.webp" media="(max-width:999px)">
-        <img src="img/smoke-quote.png" alt="Smoke on background">
-      </picture>
       <div class="quote__holder">
         @@include("_stars.html")
         <h2 class="quote__text">

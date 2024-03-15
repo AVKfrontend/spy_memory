@@ -1,4 +1,9 @@
 @use 'variables' as *;
+@use 'mixins' as *;
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: $bg-color;
@@ -19,5 +24,20 @@ body {
   @supports (scrollbar-gutter: stable) {
     overflow: auto;
     scrollbar-gutter: stable;
+  }
+}
+
+.container {
+  // width: clamp(150px, 80.556%, 1160px);
+  width: clamp(150px, flexible(1440px, 1160px, 770px, 690px), 1160px);
+  margin: 0 auto;
+
+  @media (max-width: 840px) {
+    // width: 89.6104%;
+    width: flexible(770px, 690px, 375px, 336px);
+  }
+
+  @media (max-width: 480px) {
+    width: 89.6%;
   }
 }

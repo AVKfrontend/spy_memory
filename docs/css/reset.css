@@ -1,11 +1,28 @@
-*,*:before,*:after {
+*,
+*:before,
+*:after {
 	box-sizing: border-box;
 }
-body, h1, h2, h3, h4, a, button, p, div, ul, ol, li, menu {
+
+body,
+h1,
+h2,
+h3,
+h4,
+a,
+button,
+p,
+div,
+ul,
+ol,
+li,
+menu {
 	padding: 0;
 	margin: 0;
 }
-a, button {
+
+a,
+button {
 	text-decoration: none;
 	color: inherit;
 	font: inherit;
@@ -13,16 +30,28 @@ a, button {
 	border: none;
 	cursor: pointer;
 }
-ul, ol, li {
+
+ul,
+ol,
+li {
 	list-style: none;
 }
-form, input, button {
+
+form,
+input,
+button {
 	outline: none;
 	border: none;
 }
-input[type=text], input[type=submit], textarea{
+
+input[type=text],
+input[type=submit],
+textarea {
 	-webkit-appearance: none;
-} 
-img, svg {
+	appearance: none;
+}
+
+img,
+svg {
 	display: block;
 }

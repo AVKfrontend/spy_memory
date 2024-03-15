@@ -3,15 +3,17 @@
     <div class="header">
       @@include('_logo.html')
       <nav class="menu">
-        <menu class="menu__items">
-          <li class="menu__item"><a href="#">About</a></li>
-          <li class="menu__item"><a href="#">What will you learn</a></li>
-          <li class="menu__item"><a href="#">For whom</a></li>
-          <li class="menu__item"><a href="#">Reviews</a></li>
-          <li class="menu__item"><a href="#">FAQ</a></li>
-          <li class="menu__item"><a href="#">Contact</a></li>
-        </menu>
-        <button type="button" class="menu__burger">
+        <div class="menu__wrapper">
+          <menu class="menu__items">
+            <li class="menu__item"><a href="./#about">About</a></li>
+            <li class="menu__item"><a href="./#learn">What will you learn</a></li>
+            <li class="menu__item"><a href="./#audience">For whom</a></li>
+            <li class="menu__item"><a href="./#reviews">Reviews</a></li>
+            <li class="menu__item"><a href="./#faq">FAQ</a></li>
+            <li class="menu__item"><a href="./#footer">Contact</a></li>
+          </menu>
+        </div>
+        <button type="button" id="mobile_button" class="menu__burger">
           <span></span>
         </button>
       </nav>
