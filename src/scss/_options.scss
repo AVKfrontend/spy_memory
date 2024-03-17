@@ -27,17 +27,40 @@ body {
   }
 }
 
+a {
+  display: block;
+}
+
+fieldset,
+select,
+input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit
+}
+
 .container {
   // width: clamp(150px, 80.556%, 1160px);
   width: clamp(150px, flexible(1440px, 1160px, 770px, 690px), 1160px);
   margin: 0 auto;
 
-  @media (max-width: 840px) {
+  @media (max-width:840px) {
     // width: 89.6104%;
     width: flexible(770px, 690px, 375px, 336px);
   }
 
-  @media (max-width: 480px) {
+  @media (max-width:480px) {
     width: 89.6%;
+  }
+}
+
+.order-container {
+  width: 89.3333%;
+  margin: 0 auto;
+
+  @media (min-width:770px) {
+    width: clamp(685px, flexible(1440px, 760px, 770px, 685px), 760px);
   }
 }

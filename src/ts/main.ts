@@ -15,7 +15,6 @@ if (faqButtons.length > 0) {
   }
 }
 
-// console.log(target instanceof Element);
 function faqHendler(e: Event) {
   const target = e.target;
   if (target instanceof Element) {
@@ -57,7 +56,7 @@ function scrollUp() {
 }
 //--------mobile menu hendler-------//
 const bodyElement = document.querySelector("body");
-// let isMobaileMenuInit: Boolean = false;
+const mobileMenuClass = "mobile-menu";
 function mobileMenuInit() {
   window.addEventListener("resize", mobileResizeHendler);
   if (window.innerWidth < 960) mobileMenuStart();
@@ -66,7 +65,6 @@ function mobileResizeHendler() {
   if (window.innerWidth < 960) mobileMenuStart();
 }
 function mobileMenuStart() {
-  // isMobaileMenuInit = true;
   setTimeout(() => {
     window.removeEventListener("resize", mobileResizeHendler);
   }, 0);
@@ -77,11 +75,11 @@ function mobileMenuStart() {
   if (menuItems) {
     menuItems.forEach((el) => {
       el.addEventListener("click", () => {
-        bodyElement?.classList.remove("mobile-menu");
+        bodyElement?.classList.remove(mobileMenuClass);
       });
     });
   }
 }
 function mobileMenuToggle() {
-  bodyElement?.classList.toggle("mobile-menu");
+  bodyElement?.classList.toggle(mobileMenuClass);
 }

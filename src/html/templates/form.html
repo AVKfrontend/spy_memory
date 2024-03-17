@@ -1,0 +1,63 @@
+<main>
+  <div id="order">
+    <div class="order-container">
+      <h1 class="order-title">Your <span>order</span></h1>
+      <form action="#" class="order">
+        <h3 class="order__subtitle">
+          @@include("svg/contact.html")
+          <span>Contact Information</span>
+        </h3>
+        <fieldset>
+          <input type="text" name="name" class="order__input" placeholder="First name" required>
+          <input type="text" name="lastname" class="order__input" placeholder="Last Name" required>
+          <input type="email" name="email" class="order__input" placeholder="E-mail" required>
+          <input type="tel" name="tel" class="order__input" placeholder="Phone (optional)">
+        </fieldset>
+        <h3 class="order__subtitle">
+          @@include("svg/place.html")
+          <span>Billing address</span>
+        </h3>
+        <fieldset>
+          <select name="area" id="area" class="order__input order__area">
+            <option value="1" selected>United States (US)</option>
+            <option value="2">European Union (EU)</option>
+          </select>
+          <input type="text" name="zip" class="order__input" placeholder="ZIP code" required>
+          <input type="text" name="address" class="order__input" placeholder="House number and street name" required>
+          <input type="text" name="apartment" class="order__input"
+            placeholder="Apartment, suite, unit, etc. (optional)">
+          <input type="text" name="city" class="order__input" placeholder="City" required>
+          <select name="subarea" id="subarea" class="order__input order__subarea">
+            <option value="1" selected>California</option>
+            <option value="2">Alabama</option>
+            <option value="3">Alaska</option>
+            <option value="4">Arizona</option>
+            <option value="5">Arkansas</option>
+          </select>
+        </fieldset>
+        <div class="order__promo">
+          <button type="button" class="order__promo-btn">
+            I have a promocode
+            <span></span>
+          </button>
+          <input type="text" name="promocode" id="promocode" class="order__input" placeholder="Type your code here">
+        </div>
+        <p class="order__price">
+          Total:
+          <span>$9,99</span>
+        </p>
+        <div class="order__handlers">
+          <a href="./" class="order__reject">
+            @@include("_long-icon.html",{"label":""})
+            <span class="order__reject-inner">
+              @@include("_long-icon.html",{"label":"Return to home"})
+            </span>
+          </a>
+          <button type="submit" class="order__submit">
+            @@include("_long-icon.html",{"label":"Continue to payment"})
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

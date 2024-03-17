@@ -9,6 +9,8 @@ $grey-font-color: #999;
 $timer-second-font-color: #b3b3b3;
 $footer-title-color: #686868;
 $rating-bg-color: #383838;
+$placeholder-color: #818181;
+$input-bd-color: #343434;
 
 $main-font: "PT Sans", sans-serif;
 $second-font: "Roboto", sans-serif;
@@ -27,7 +29,7 @@ $second-font: "Roboto", sans-serif;
     color: $accent-color;
   }
 
-  @media (max-width:680px) {
+  @media (max-width:630px) {
     font-size: clamp(35px, 9.3333vw, 58px);
   }
 }
