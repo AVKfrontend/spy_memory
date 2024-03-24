@@ -4,20 +4,18 @@ function startCheck() {
     timerInit();
     checkPosition();
 }
-var saleLengthInHours = 24;
-var saleLengthMS = saleLengthInHours * 1000 * Math.pow(60, 2);
+var SALE_LENGTH_IN_HOURSE = 24;
+var saleLengthMS = SALE_LENGTH_IN_HOURSE * 1000 * Math.pow(60, 2);
 var timerCounts = document.getElementsByClassName("timer__count");
 var timers = Array.from(timerCounts);
-var timerChangeEvent = new CustomEvent("timerChange");
 function timerInit() {
     if (timers.length) {
         var haveDateString = localStorage.getItem("startTime");
         if (haveDateString && haveDateString.length > 0) {
-            var startTime = new Date(JSON.parse(haveDateString));
-            timerParseOut(startTime);
-            var timerTime = getTimerTime(startTime);
+            var startTime_1 = new Date(JSON.parse(haveDateString));
+            var timerTime = getTimerTime(startTime_1);
             if (timerTime > -1) {
-                startTimeCounting(startTime);
+                startTimeCounting(startTime_1);
             }
             else if (timerTime < -saleLengthMS)
                 timerStart();
@@ -29,36 +27,17 @@ function timerInit() {
         console.log("Error in timer");
 }
 function startTimeCounting(startTime) {
-    window.addEventListener("timerChange", function () {
-        timerParseOut(startTime);
-    });
-    var secnd = new Date().getSeconds();
-    setInterval(function () {
-        var currSecnd = new Date().getSeconds();
-        if (currSecnd !== secnd) {
-            secnd = currSecnd;
-            window.dispatchEvent(timerChangeEvent);
-        }
-    }, 100);
-}
-function timerParseOut(time) {
-    var timerTime = getTimerTime(time);
-    if (timerTime > -1) {
-        var hours_1 = format(+timerTime / 3600000);
-        var minuts_1 = format((+timerTime % 3600000) / 60000);
-        var seconds_1 = format((+timerTime % 60000) / 1000);
-        timers.forEach(function (el) { return setTime(el, hours_1, minuts_1, seconds_1); });
-    }
+    var timerWorker = new Worker("./js/workers/timer_worker.js");
+    timerWorker.postMessage({ startTime: startTime, saleLengthMS: saleLengthMS });
+    timerWorker.onmessage = function (e) {
+        var _a = e.data, hours = _a.hours, minuts = _a.minuts, seconds = _a.seconds;
+        timers.forEach(function (el) { return setTime(el, hours, minuts, seconds); });
+    };
+    window.addEventListener("beforeunload", function () { return timerWorker.terminate(); });
 }
 function getTimerTime(time) {
     var nowMS = Date.now();
     return saleLengthMS - (nowMS - time.getTime());
-}
-function format(num) {
-    var str = Math.floor(num).toString();
-    if (str.length === 1)
-        str = "0" + str;
-    return str;
 }
 function setTime(timer, hourse, minuts, seconds) {
     var h = timer.querySelector(".timer__hours");
@@ -76,7 +55,6 @@ function setTime(timer, hourse, minuts, seconds) {
 }
 function timerStart() {
     var startTime = new Date();
-    timerParseOut(startTime);
     startTimeCounting(startTime);
     try {
         localStorage.setItem("startTime", JSON.stringify(startTime));

@@ -6,17 +6,15 @@ function startCheck() {
 }
 
 //--------timer mechanics-------//
-const saleLengthInHours = 24;
-const saleLengthMS = saleLengthInHours * 1000 * 60 ** 2;
+const SALE_LENGTH_IN_HOURSE = 24;
+const saleLengthMS = SALE_LENGTH_IN_HOURSE * 1000 * 60 ** 2;
 const timerCounts = document.getElementsByClassName("timer__count");
 const timers = Array.from(timerCounts);
-const timerChangeEvent = new CustomEvent("timerChange");
 function timerInit() {
   if (timers.length) {
     const haveDateString = localStorage.getItem("startTime");
     if (haveDateString && haveDateString.length > 0) {
       const startTime: Date = new Date(JSON.parse(haveDateString));
-      timerParseOut(startTime);
       const timerTime = getTimerTime(startTime);
       if (timerTime > -1) {
         startTimeCounting(startTime);
@@ -25,35 +23,21 @@ function timerInit() {
   } else console.log("Error in timer");
 }
 function startTimeCounting(startTime: Date) {
-  window.addEventListener("timerChange", () => {
-    timerParseOut(startTime);
-  });
-  let secnd: number = new Date().getSeconds();
-  setInterval(() => {
-    const currSecnd: number = new Date().getSeconds();
-    if (currSecnd !== secnd) {
-      secnd = currSecnd;
-      window.dispatchEvent(timerChangeEvent);
-    }
-  }, 100);
-}
-function timerParseOut(time: Date) {
-  const timerTime = getTimerTime(time);
-  if (timerTime > -1) {
-    const hours = format(+timerTime / 3600000);
-    const minuts = format((+timerTime % 3600000) / 60000);
-    const seconds = format((+timerTime % 60000) / 1000);
+  const timerWorker = new Worker("./js/workers/timer_worker.js");
+  timerWorker.postMessage({ startTime, saleLengthMS });
+  timerWorker.onmessage = (e) => {
+    const {
+      hours,
+      minuts,
+      seconds,
+    }: { hours: string; minuts: string; seconds: string } = e.data;
     timers.forEach((el) => setTime(el, hours, minuts, seconds));
-  }
+  };
+  window.addEventListener("beforeunload", () => timerWorker.terminate());
 }
 function getTimerTime(time: Date) {
   const nowMS = Date.now();
   return saleLengthMS - (nowMS - time.getTime());
-}
-function format(num: number) {
-  let str: string = Math.floor(num).toString();
-  if (str.length === 1) str = "0" + str;
-  return str;
 }
 function setTime(
   timer: Element,
@@ -76,7 +60,6 @@ function setTime(
 }
 function timerStart() {
   const startTime = new Date();
-  timerParseOut(startTime);
   startTimeCounting(startTime);
   try {
     localStorage.setItem("startTime", JSON.stringify(startTime));
