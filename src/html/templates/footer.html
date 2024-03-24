@@ -3,15 +3,15 @@
 		<div class="footer">
 			<div class="footer__blok">
 				<div class="logo--footer">
-					@@include('_logo.html')
+					@@include('_logo.html', {'link_prefics': '@@link_prefics'})
 				</div>
 			</div>
 			<div class="footer__blok">
 				<h3 class="footer__title">NAVIGATE</h3>
 				<ul class="footer__menu">
-					<li><a href="./#about" class="footer__link">About</a></li>
-					<li><a href="./#learn" class="footer__link">What you'll learn</a></li>
-					<li><a href="./#audience" class="footer__link">For whom</a></li>
+					<li><a href="@@link_prefics/#about" class="footer__link">About</a></li>
+					<li><a href="@@link_prefics/#learn" class="footer__link">What you'll learn</a></li>
+					<li><a href="@@link_prefics/#audience" class="footer__link">For whom</a></li>
 				</ul>
 			</div>
 			<div class="footer__blok">

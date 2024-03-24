@@ -17,7 +17,7 @@ const dist_min = "dist_min/";
 
 const path = {
 	src: {
-		html: src + 'html/*.html',
+		html: src + 'html/pages/**/*.html',
 		scss: src + 'scss/index.scss',
 		css: src + 'css/*.css',
 		img: src + 'img/**/*.*',
