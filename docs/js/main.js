@@ -1,7 +1,35 @@
+var _a;
 window.addEventListener("DOMContentLoaded", startCheck, { once: true });
 function startCheck() {
     timerInit();
     checkPosition();
+    stopPreloader();
+}
+var preloaderPaths = document.querySelectorAll(".preloader svg path");
+var accentColor = "#f13131", witeColor = "#fff", intervalDuration = 1100;
+var preloaderInterval = setInterval(preloaderChengeColor, intervalDuration);
+var bodyClassList = (_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.classList;
+bodyClassList === null || bodyClassList === void 0 ? void 0 : bodyClassList.add("loading");
+function stopPreloader() {
+    setTimeout(function () {
+        clearInterval(preloaderInterval);
+        bodyClassList === null || bodyClassList === void 0 ? void 0 : bodyClassList.remove("loading");
+        var preloader = document.querySelector(".preloader");
+        if (preloader instanceof HTMLElement) {
+            preloader.style.opacity = "0";
+            setTimeout(function () {
+                preloader.style.visibility = "hidden";
+            }, intervalDuration);
+        }
+    }, 4000);
+}
+function preloaderChengeColor() {
+    preloaderPaths === null || preloaderPaths === void 0 ? void 0 : preloaderPaths.forEach(function (el) {
+        if (el.attributes) {
+            var fill = el.attributes[1];
+            fill.value = fill.value === accentColor ? witeColor : accentColor;
+        }
+    });
 }
 var SALE_LENGTH_IN_HOURSE = 24;
 var saleLengthMS = SALE_LENGTH_IN_HOURSE * 1000 * Math.pow(60, 2);

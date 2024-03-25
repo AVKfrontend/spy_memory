@@ -49,7 +49,7 @@
   text-decoration: underline #fff;
 }
 
-.icon, .l-icon__bg, .timer, .menu__wrapper, .c-icon, .faq__close {
+.preloader__box, .icon, .l-icon__bg, .timer, .menu__wrapper, .c-icon, .faq__close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -199,6 +199,33 @@ input {
     font-size: 16px;
   }
 }
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #222;
+  z-index: 11;
+  transition: opacity 1s linear;
+}
+.preloader__box {
+  width: 100%;
+  height: 100%;
+}
+.preloader__box svg {
+  width: 50%;
+  max-width: 150px;
+  height: auto;
+}
+.preloader__box svg path {
+  transition: fill 1s linear;
+}
+
+.loading {
+  overflow: hidden;
+}
+
 .icon {
   width: 100px;
   aspect-ratio: 1;
@@ -501,12 +528,12 @@ a .l-icon__bg:hover {
 .menu__burger span::before {
   content: "";
   top: -11px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, top 0.3s;
 }
 .menu__burger span::after {
   content: "";
   bottom: -9px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, bottom 0.3s;
 }
 @media (max-width: 959px) {
   .menu__wrapper {

@@ -2,8 +2,38 @@ window.addEventListener("DOMContentLoaded", startCheck, { once: true });
 function startCheck() {
   timerInit();
   checkPosition();
+  stopPreloader();
 }
 
+//--------preloader-------//
+const preloaderPaths = document.querySelectorAll(".preloader svg path");
+const accentColor = "#f13131",
+  witeColor = "#fff",
+  intervalDuration = 1100;
+const preloaderInterval = setInterval(preloaderChengeColor, intervalDuration);
+const bodyClassList = document.querySelector("body")?.classList;
+bodyClassList?.add("loading");
+function stopPreloader() {
+  setTimeout(() => {
+    clearInterval(preloaderInterval);
+    bodyClassList?.remove("loading");
+    const preloader = document.querySelector(".preloader");
+    if (preloader instanceof HTMLElement) {
+      preloader.style.opacity = "0";
+      setTimeout(() => {
+        preloader.style.visibility = "hidden";
+      }, intervalDuration);
+    }
+  }, 4000);
+}
+function preloaderChengeColor() {
+  preloaderPaths?.forEach((el) => {
+    if (el.attributes) {
+      const fill = el.attributes[1];
+      fill.value = fill.value === accentColor ? witeColor : accentColor;
+    }
+  });
+}
 //--------timer mechanics-------//
 const SALE_LENGTH_IN_HOURSE = 24;
 const saleLengthMS = SALE_LENGTH_IN_HOURSE * 1000 * 60 ** 2;
